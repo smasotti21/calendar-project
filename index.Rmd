@@ -9,20 +9,127 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r, eval=FALSE, include=FALSE}
-# you'll need to delete the eval=FALSE for this code chunk to execute
-# but keep the include = FALSE so that it does not show up in the knit file (on the webpage)
-
+# the "include=FALSE" code chunk option suppresses the code and the output from this chunk from appearing in the knit file
+# please include your import of the data and any wrangling here
 library(tidyverse)
 library(lubridate)
 library(ical)
+library(extrafont)
+font_import()
+   
+#importing intended calendar
+intended_calendar <- ical_parse_df(file = "~/git/Personal-repository/Data_Science_Final_Project/Intended_Schedule/intended_smasotti21@gmail.com.ics") %>%
+mutate(start_datetime = with_tz(start, tzone = "America/New_York")
+, end_datetime = with_tz(end, tzone = "America/New_York")
+, length_min = end_datetime - start_datetime
+, length_hrs = length_min/60
+, date = floor_date(start_datetime, unit = "day"))
 
-my_calendar <- ical_parse_df(file = "INSERT_PATH_HERE/your_user_name@amherst.edu.ics") %>%
-  mutate(start_datetime = with_tz(start, tzone = "America/New_York")
-    , end_datetime = with_tz(end, tzone = "America/New_York")
-    , length_sec = end_datetime - start_datetime
-    , length_min = length_sec/60
-    , length_hrs = length_min/60
-    , date = floor_date(start_datetime, unit = "day"))
+#importing actual calendar
+actual_calendar <- ical_parse_df(file = "/Users/stephaniemasotti/git/Personal-repository/Data_Science_Final_Project/actual.ics") %>%
+mutate(start_datetime = with_tz(start, tzone = "America/New_York")
+, end_datetime = with_tz(end, tzone = "America/New_York")
+, length_min = end_datetime - start_datetime
+, length_hrs = length_min/60
+, date = floor_date(start_datetime, unit = "day"))
+
+#wrangling data 
+library(dplyr)
+
+# tidy intended 
+tidy_intended_calendar <- intended_calendar %>%
+  filter(start >= "2020-04-13 09:30:00") %>%
+  select(-uid, -last.modified, -status, -start_datetime, -end_datetime, -description) %>%
+  mutate(schedule = "intended")
+
+# tidy intended categories 
+tidy_intended_categories <- tidy_intended_calendar %>%
+  filter((summary != "Sleep ")) %>%
+  filter((summary != "Sleep")) %>%
+  mutate(category = case_when((str_detect(summary, "HW"))~"School/work", 
+         (str_detect(summary, "Class"))~"School/work", 
+         (str_detect(summary, "class"))~"School/work", 
+         (str_detect(summary, "classes"))~"School/work",
+         (str_detect(summary, "Schedule"))~"School/work",
+         (str_detect(summary, "schedule"))~"School/work",
+         (str_detect(summary, "Organize"))~"School/work",
+         (str_detect(summary, "Meeting"))~"School/work",
+         (str_detect(summary, "meeting"))~"School/work",
+         (str_detect(summary, "emails"))~"School/work",
+         (str_detect(summary, "Emails"))~"School/work",
+         (str_detect(summary, "Phone"))~"School/work",
+         (str_detect(summary, "Lunch"))~"Meal", 
+         (str_detect(summary, "Dinner"))~"Meal", 
+         (str_detect(summary, "Breakfast"))~"Meal", 
+         (str_detect(summary, "Brunch"))~"Meal",
+         (str_detect(summary, "Exercise"))~"Exercise", 
+         (str_detect(summary, "art"))~"Art",
+         (str_detect(summary, "Art"))~"Art",
+         (str_detect(summary,"Practice Piano"))~"Practice Piano", 
+         (str_detect(summary, "Read"))~"Read", 
+         (str_detect(summary, "Watch Lylah"))~"Watch Lylah", 
+         (str_detect(summary, "Bike Ride"))~"Exercise", 
+         (str_detect(summary, "Yoga"))~"Exercise",
+         (str_detect(summary, "Zoom with friends"))~"Zoom with friends",
+         (str_detect(summary, "movie"))~"Watch Movie/Show", 
+         (str_detect(summary, "Show"))~"Watch Movie/Show", 
+         (str_detect(summary, "Office hours"))~"School/work", 
+         (str_detect(summary, "Office Hours"))~"School/work", 
+         (str_detect(summary, "Bake"))~"Bake", 
+         (str_detect(summary, "Sew"))~"Sew", 
+         (str_detect(summary, "Clean"))~"Chores"))%>%
+         mutate(total_min_day = 1440) %>%
+         mutate(total_min_week = 10080)
+
+
+
+#tidy actual 
+tidy_actual_calendar <- actual_calendar %>%
+  filter(start >= "2020-04-13 09:30:00") %>%
+  select(-uid, -last.modified, -status, -start_datetime, -end_datetime, -description) %>%
+  mutate(schedule = "actual") %>%
+  filter(start < "2020-04-21 01:30:00")
+
+#tidy actual categories 
+tidy_actual_categories <- tidy_actual_calendar %>%
+    filter((summary != "Sleep ")) %>%
+    filter((summary != "")) %>%
+    mutate(category = case_when((str_detect(summary, "HW"))~"School/work", 
+         (str_detect(summary, "Exam"))~"School/work",
+         (str_detect(summary, "emails"))~"School/work",
+         (str_detect(summary, "Emails"))~"School/work",
+         (str_detect(summary, "Schedule"))~"School/work",
+         (str_detect(summary, "schedule"))~"School/work",
+         (str_detect(summary, "Meeting"))~"School/work",
+         (str_detect(summary, "meeting"))~"School/work",
+         (str_detect(summary, "Phone"))~"School/work",
+         (str_detect(summary, "Class"))~"School/work", 
+         (str_detect(summary, "Clean"))~"Chores", 
+         (str_detect(summary, "Schedule"))~"School/work",
+         (str_detect(summary, "Dinner"))~"Meal", 
+         (str_detect(summary, "Lunch"))~"Meal", 
+         (str_detect(summary, "Breakfast"))~"Meal", 
+         (str_detect(summary, "Brunch"))~"Meal",
+         (str_detect(summary, "Exercise"))~"Exercise", 
+         (str_detect(summary, "art"))~"Art",
+         (str_detect(summary, "Art"))~"Art",
+         (str_detect(summary,"Practice Piano"))~"Practice Piano", 
+         (str_detect(summary, "Read"))~"Read", 
+         (str_detect(summary, "Watch Lylah"))~"Watch Lylah", 
+         (str_detect(summary, "Bike Ride"))~"Exercise", 
+         (str_detect(summary, "Yoga"))~"Exercise",
+         (str_detect(summary, "Zoom with friends"))~"Zoom with friends",
+         (str_detect(summary, "movie"))~"Watch Movie/Show", 
+         (str_detect(summary, "Movie"))~"Watch Movie/Show", 
+         (str_detect(summary, "Show"))~"Watch Movie/Show", 
+         (str_detect(summary, "Office hours"))~"School/work", 
+         (str_detect(summary, "Office Hours"))~"School/work", 
+         (str_detect(summary, "classes"))~"School/work", 
+         (str_detect(summary, "Bake"))~"Bake", 
+         (str_detect(summary, "Sew"))~"Sew")) %>%
+         mutate(total_min_day = 1440) %>%
+         mutate(total_min_week = 10080)
+
 ```
 
 # Diary of a Data Science Student
@@ -35,7 +142,7 @@ blah blah blah
 
 I can include an image (not created in R) like this:
 
-![cute puppy](./img/cute_puppy.png)
+![cute puppy](~/git/calendar-project/cute_puppy.png)
 
 Create a "img" folder within your calendar-project repo and store the image files there.
 
@@ -43,17 +150,9 @@ Create a "img" folder within your calendar-project repo and store the image file
 
 I collected data by . . . 
 
-I can write a bulleted list like this:
-
-- here's the first thing I want to say
-- and I also want to say this
-- lastly, this
-
-And a numbered list like this:
-
-1. First thing
-2. Second thing
-3. Third thing
+1. Creating two separate google calendars, one titled "Intended Schedule", and one titled "Actual Schedule".
+2. Logging the activity for my "intended schedule" for each day every morning when I woke up.
+3. Logging the activity for my "actual schedule" every time I finshed completing an activity.
 
 # Results
 
