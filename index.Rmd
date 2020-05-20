@@ -25,9 +25,9 @@ my_calendar <- ical_parse_df(file = "INSERT_PATH_HERE/your_user_name@amherst.edu
     , date = floor_date(start_datetime, unit = "day"))
 ```
 
-# You can include section headers like this
-## Or section subheaders like this
-### How do I spend my time?
+# Diary of a Data Science Student
+## How to Avoid Cabin Fever in the age of COVID-19
+### How do I intend to spend my time vs. how do I actually spend my time?
 
 Motivation + primary questions of interest
 
