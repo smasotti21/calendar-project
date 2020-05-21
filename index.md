@@ -4,6 +4,8 @@ Diary of a Data Science Student
 How to Avoid Cabin Fever in the Age of COVID-19
 -----------------------------------------------
 
+![Greg Heffley](./images/greg.png)
+
 ### Motivation + Primary Questions of Interest
 
 It is difficult to reflect upon the age of COVID-19, as we have not yet
