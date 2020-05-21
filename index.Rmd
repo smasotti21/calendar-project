@@ -51,7 +51,7 @@ And here are my results . . .
 
 
 
-![Plot 1](~git/calendar-project/images/Rplot1.png)
+(~git/calendar-project/images/Rplot1.png)
 
 ```{r}
 # intersperse relevant figures and text

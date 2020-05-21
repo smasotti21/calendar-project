@@ -50,6 +50,6 @@ Initial round of visualizations
 
 ### How much time did I actually spend each day on each activity?
 
-![Plot 1](~git/calendar-project/images/Rplot1.png)
+(~git/calendar-project/images/Rplot1.png)
 
     # intersperse relevant figures and text
