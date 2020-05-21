@@ -1,2 +1,4 @@
 theme: jekyll-theme-cayman
 title: Welcome to my Data Science Diary!
+header_pages:
+ - index.md
