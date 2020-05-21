@@ -22,7 +22,7 @@ COVID-19
 
 I can include an image (not created in R) like this:
 
-![cute puppy](~/git/calendar-project/cute_puppy.png)
+![cute puppy](./images/cute_puppy.png)
 
 Create a "img" folder within your calendar-project repo and store the image files there.
 
@@ -50,9 +50,9 @@ And here are my results . . .
 ### How much time did I actually spend each day on each activity?
 
 
-![Intended time division per day as a barplot](/Users/stephaniemasotti/git/calendar-project/images/Rplot1.png)
-![Actual time division per day as a barplot](/Users/stephaniemasotti/git/calendar-project/images/Rplot2.png)
-![Intended time division per day as a polar plot](/Users/stephaniemasotti/git/calendar-project/images/Rplot3.png)
-![Actual time division per day as a polar plot](/Users/stephaniemasotti/git/calendar-project/images/Rplot4.png)
-![Intended Time Spent on Individual Categories as barplots](/Users/stephaniemasotti/git/calendar-project/images/Rplot5.png)
-![Actual Time Spent on Individual Categories as barplots](/Users/stephaniemasotti/git/calendar-project/images/Rplot6.png)
+![Intended time division per day as a barplot](./images/Rplot1.png)
+![Actual time division per day as a barplot](./images/Rplot2.png)
+![Intended time division per day as a polar plot](./images/Rplot3.png)
+![Actual time division per day as a polar plot](./images/Rplot4.png)
+![Intended Time Spent on Individual Categories as barplots](./images/Rplot5.png)
+![Actual Time Spent on Individual Categories as barplots](./images/Rplot6.png)
