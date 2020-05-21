@@ -49,7 +49,7 @@ And here are my results . . .
 ### How much time did I intend to spend each day on each activity?
 ### How much time did I actually spend each day on each activity?
 
-```{r, eval=FALSE, include=FALSE}
+```{r, echo=FALSE}
 # intersperse relevant figures and text
 # the "include=FALSE" code chunk option suppresses the code and the output from this chunk from appearing in the knit file
 # please include your import of the data and any wrangling here
