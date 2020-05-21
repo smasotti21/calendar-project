@@ -1,10 +1,10 @@
 Diary of a Data Science Student
 ===============================
 
-How to Avoid Cabin Fever in the age of COVID-19
+How to Avoid Cabin Fever in the Age of COVID-19
 -----------------------------------------------
 
-### Motivation + primary questions of interest
+### Motivation + Primary Questions of Interest
 
 It is difficult to reflect upon the age of COVID-19, as we have not yet
 left it. Regardless, this time will surely be known as a global turning

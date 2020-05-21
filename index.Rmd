@@ -13,10 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Diary of a Data Science Student
-## How to Avoid Cabin Fever in the age of COVID-19
+## How to Avoid Cabin Fever in the Age of COVID-19
 
 
-### Motivation + primary questions of interest
+### Motivation + Primary Questions of Interest
 
 It is difficult to reflect upon the age of COVID-19, as we have not yet left it.  Regardless, this time will surely be known as a global turning point.  As a college student, my semester was abruptly disrupted when I was told to leave campus and finish the semester remotely from home.  Since I attend Amherst College, a small liberal arts institution that emphasizes the importance of small, in-person classes for fostering an intimate, intellectual environment, this was a difficult transition for various reasons.
 I function in my school environment and home environment very differently, so I knew that I would have to make some changes to my home environment in order to retain my motivation and focus for my schoolwork.  I decided that creating a strong sense of structure would be most effective for my learning, since my days on campus were very structured.  In order to maintain this structure, I decided that I would create a schedule every morning when I wake up, and try my best to stick to it.  I was also curious about how well I would stick to this "intended schedule", so I created an "actual schedule", as well, in which I logged all of my actual activity after it had been completed.  I did this for one week.  Afterwards, I studied how I intended to spend my time and how I actually spent my time.
