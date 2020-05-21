@@ -50,11 +50,9 @@ And here are my results . . .
 ### How much time did I actually spend each day on each activity?
 
 
-
-(~git/calendar-project/images/Rplot1.png)
-
-```{r}
-# intersperse relevant figures and text
-
-
-```
+![Intended time division per day as a barplot](/Users/stephaniemasotti/git/calendar-project/images/Rplot1.png)
+![Actual time division per day as a barplot](/Users/stephaniemasotti/git/calendar-project/images/Rplot2.png)
+![Intended time division per day as a polar plot](/Users/stephaniemasotti/git/calendar-project/images/Rplot3.png)
+![Actual time division per day as a polar plot](/Users/stephaniemasotti/git/calendar-project/images/Rplot4.png)
+![Intended Time Spent on Individual Categories as barplots](/Users/stephaniemasotti/git/calendar-project/images/Rplot5.png)
+![Actual Time Spent on Individual Categories as barplots](/Users/stephaniemasotti/git/calendar-project/images/Rplot6.png)
